@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AnimalHealt</string>
+    <string name="categoria">Categoría</string>
+    <string name="previous">Previous</string>
+    <string name="producto">Producto</string>
+    <string name="registro">Registro</string>
+</resources>

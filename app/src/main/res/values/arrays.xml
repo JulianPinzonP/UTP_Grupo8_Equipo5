@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lista_categoria">
+        <item>Perro</item>
+        <item>Gato</item>
+        <item>Pajaro</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="lista_marca">
+        <item>Pincher</item>
+        <item>Tucan</item>
+        <item>Garfiel</item>
+        <item>Pitbull</item>
+    </string-array>
+
+    <string-array name="lista_provedores">
+        <item>Luis Angel</item>
+        <item>Erika Julieth</item>
+        <item>Dora Lilia</item>
+        <item>Luis Angel Bocanegra</item>
+    </string-array>
+
+    <string-array name="nivel_de_ingles">
+        <item>Seleccione...</item>
+        <item>Ingles I</item>
+        <item>Ingles II</item>
+        <item>Ingles III</item>
+        <item>Ingles IV</item>
+    </string-array>
+</resources>
