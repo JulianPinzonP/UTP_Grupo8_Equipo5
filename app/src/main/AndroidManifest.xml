@@ -13,6 +13,9 @@
             android:name=".RegistroActivity"
             android:exported="false" />
         <activity
+            android:name=".ListViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".EncuestaActivity"
             android:exported="false"
             android:label="@string/registro" />

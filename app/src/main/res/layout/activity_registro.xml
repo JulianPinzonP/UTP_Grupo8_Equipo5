@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
@@ -18,14 +19,217 @@
             android:fontFamily="@font/fruktur"
             android:text="Resgitrate"
             android:textAlignment="center"
+            android:textAppearance="@style/mi_estilo"
             android:textColor="#000000"
             android:textSize="30dp" />
 
-        <ImageView
-            android:id="@+id/imageView3"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="125dp"
+                android:layout_height="115dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/registro1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#FFFFFF"
+                        android:hint="Nombre" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#FFFFFF"
+                            android:hint="Apellido" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+        </TableRow>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="#12F8F4F4"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp">
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha de nacimiento"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/editTextDate2"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Ingrese su fecha de nacimiento"
+                    android:inputType="date"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Telefono"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/editTextPhone2"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Ingrese su numero"
+                    android:inputType="phone"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="184dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="#12F8F4F4"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp">
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Correo Electronico"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/editTextTextEmailAddress2"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Ingrese el correo"
+                    android:inputType="textEmailAddress"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Contraseña"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/editTextTextPassword2"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Ingrese la contraseña"
+                    android:inputType="textPassword"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="#12F8F4F4"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp">
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="¿Que prefieres?"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/checkBox7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="100dp"
+                        android:text="Gatos" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Perros" />
+
+                </TableRow>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/button7"
             android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/registro1" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:backgroundTint="#1A2B80"
+            android:gravity="center"
+            android:text="Registrar"
+            android:textAlignment="center" />
+
     </LinearLayout>
 </ScrollView>

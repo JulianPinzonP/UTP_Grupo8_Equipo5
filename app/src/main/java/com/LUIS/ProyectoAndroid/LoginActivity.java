@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void registrarse(View view){
-        Intent newIntent= new Intent(this,EncuestaActivity.class);
+        Intent newIntent= new Intent(this,RegistroActivity.class);
         startActivity(newIntent);
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {

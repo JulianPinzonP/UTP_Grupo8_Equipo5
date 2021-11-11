@@ -18,15 +18,18 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class EncuestaActivity extends AppCompatActivity {
-    EditText et1,et2,et3,et4;
-    TextView tv1;
-    SeekBar sk1;
-    String texto = "";
-    Spinner sp1;
-    Switch sw1;
-    CheckBox ch1,ch2,ch3,ch4,ch5,ch6;
-    RadioButton rb1,rb2,rb3;
+    private EditText et1,et2,et3,et4;
+    private TextView tv1;
+    private SeekBar sk1;
+    private String texto = "";
+    private Spinner sp1;
+    private Switch sw1;
+    private CheckBox ch1,ch2,ch3,ch4,ch5,ch6;
+    private RadioButton rb1,rb2,rb3;
+    private TextInputEditText ti1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,7 @@ public class EncuestaActivity extends AppCompatActivity {
         et1 = (EditText) findViewById(R.id.editTextTextPersonName2);
         et2 = (EditText) findViewById(R.id.editTextPhone);
         et3 = (EditText) findViewById(R.id.editTextTextEmailAddress);
+        ti1 = (TextInputEditText) findViewById(R.id.direccion);
         et4 = (EditText) findViewById(R.id.editTextDate);
         tv1 = (TextView) findViewById(R.id.textView13);
         sp1 = (Spinner) findViewById(R.id.spinner);
@@ -71,6 +75,7 @@ public class EncuestaActivity extends AppCompatActivity {
         String fechaN = "Fecha de nacimiento: "+et4.getText().toString();
         String tel = "Teléfono: "+et2.getText().toString();
         String email = "Correo: "+et3.getText().toString();
+        String dic = "Dirección: "+ti1.getText().toString();
         String niv_ing = "Nivel en ingles: "+sp1.getSelectedItem();
         String gus_prog= "¿Te gusta programar?: ";
         if(sw1.isChecked()){
@@ -113,7 +118,7 @@ public class EncuestaActivity extends AppCompatActivity {
             .setIcon(android.R.drawable.ic_dialog_alert)
             .setTitle("Datos")
             .setMessage(nom+"\n"+fechaN+"\n"+tel+"\n"+email+"\n"+niv_ing+"\n"+gus_prog+"\n"+leng
-                    +"\n"+tiemp_exp+"\n"+niv_sat)
+                    +"\n"+tiemp_exp+"\n"+niv_sat+"\n"+dic)
             .setPositiveButton("Aceptar",null).show();
     }
 
