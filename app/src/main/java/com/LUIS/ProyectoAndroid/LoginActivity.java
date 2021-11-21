@@ -4,8 +4,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -18,9 +22,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView t1,t2;
-    ImageView iv1;
-    EditText et1,et2;
+    private TextView t1,t2;
+    private ImageView iv1;
+    private EditText et1,et2;
+    private MyDBSQLiteHelper admin;
+    private SQLiteDatabase db;
+    private Cursor filas;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -32,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         //Ocultar ActionBar
         getSupportActionBar().hide();
+
+        admin = new MyDBSQLiteHelper(this, vars.nomDB , null, vars.version);
 
         t1 = findViewById(R.id.textView);
         t1.setText("AnimalHealt");
@@ -46,8 +56,13 @@ public class LoginActivity extends AppCompatActivity {
         t2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (et1.getText().toString().equals("admin")) {
-                    Toast.makeText(LoginActivity.this, "Su contraseña es: admin", Toast.LENGTH_SHORT).show();
+                String correo = et1.getText().toString();
+                db = admin.getReadableDatabase();
+                filas = db.rawQuery("SELECT * FROM registro WHERE correo='" + correo + "'", null);
+                if ((filas.moveToFirst())) {
+                    if (filas.getString(5).equals(correo)) {
+                        Toast.makeText(LoginActivity.this, "Su contraseña es: "+ filas.getString(6), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -55,22 +70,28 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void iniciarSesion(View view){
-        if(et1.getText().toString().equals("admin") && et2.getText().toString().equals("admin")){
-            Intent newIntent= new Intent(this,MainActivity.class);
-            startActivity(newIntent);
-            finish();
+        String correo = et1.getText().toString();
+        String pass = et2.getText().toString();
+
+        if(!correo.equals("") && !pass.equals("")) {
+            db = admin.getReadableDatabase();
+            filas = db.rawQuery("SELECT * FROM registro WHERE correo='" + correo + "'", null);
+            if ((filas.moveToFirst())) {
+                if(filas.getString(6).equals(pass)) {
+                    Intent newIntent = new Intent(this, MainActivity.class);
+                    newIntent.putExtra("nomTabla", "registro");
+                    newIntent.putExtra("correo", correo);
+                    startActivity(newIntent);
+                }
+                else {
+                    Toast.makeText(this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
+                    et2.setText("");
+                }
+            }
         }
         else {
-            Toast.makeText(LoginActivity.this, "Datos Incorrectos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Ingrese sus datos completos", Toast.LENGTH_SHORT).show();
             et1.requestFocus();
-        }
-        if(et1.getText().toString().equals("")){
-            Toast.makeText(LoginActivity.this, "Por favor, Ingrese el usuario", Toast.LENGTH_SHORT).show();
-            et1.requestFocus();
-        }
-        else if(et2.getText().toString().equals("")){
-            Toast.makeText(LoginActivity.this, "Por favor, Ingrese la contraseña", Toast.LENGTH_SHORT).show();
-            et2.requestFocus();
         }
     }
 
@@ -95,4 +116,6 @@ public class LoginActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
 }

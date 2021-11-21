@@ -1,27 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="goToActivityProducto"
-        android:text="Ir a Producto"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/fruktur"
+            android:text="Perfil"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="30sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="196dp"
+            android:layout_marginBottom="25dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/gato" />
+
+            <ListView
+                android:id="@+id/listaperso"
+                style="@style/Widget.AppCompat.Light.ListView.DropDown"
+                android:layout_width="match_parent"
+                android:layout_height="177dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="25dp">
+
+            </ListView>
+        </TableRow>
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="AGREGAR MASCOTAS" />
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="VER MASCOTAS" />
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="HISTORIAL" />
+
+    </LinearLayout>
+</ScrollView>

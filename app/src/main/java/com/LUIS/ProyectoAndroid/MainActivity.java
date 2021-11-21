@@ -5,16 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ListView lv;
+    private MyDBSQLiteHelper admin;
+    private SQLiteDatabase db;
+    private Cursor filas;
 
     public void goToActivityProducto(View view) {
         Intent newIntent = new Intent(this, ProductoActivity.class);
@@ -23,11 +35,44 @@ public class MainActivity extends AppCompatActivity {
         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(newIntent);
     }
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+//        Toast.makeText(this, "Método onCreate()", Toast.LENGTH_LONG).show();
+        lv = findViewById(R.id.listaperso);
+
+        admin = new MyDBSQLiteHelper(this, vars.nomDB , null, vars.version);
+        Bundle extras = getIntent().getExtras();
+        String corr = extras.getString("correo");
+        ArrayList<String> listado = new ArrayList<String>();
+
+        String nomTabla = extras.getString("nomTabla");
+
+        //Convertir la primera letra a mayusculas
+        String tabla = nomTabla.substring(0,1).toUpperCase() + nomTabla.substring(1);
+
+        //Cambiar título de la actividad
+        //setTitle(tabla);
+
+        db = admin.getReadableDatabase();
+        if (nomTabla.equals("registro")) {
+            filas = db.rawQuery("SELECT * FROM registro WHERE correo='" + corr + "'", null);
+            while (filas.moveToNext()) {
+                listado.add("Nombre: " + filas.getString(1) + "\n\nApellido: " + filas.getString(2) + "\n\nFecha de nacimiento: " +
+                        filas.getString(3) + "\n\nTelefono: " + filas.getString(4));
+            }
+            db.close();
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_list_item_1, listado);
+        lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                Toast.makeText(getApplicationContext(), " - "+lv.getItemAtPosition(pos), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public boolean onOptionsItemSelected(MenuItem menuItem) {
@@ -67,15 +112,5 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    protected void onStart() {
-        super.onStart();
-//        Toast.makeText(this, "Método onStart()", Toast.LENGTH_LONG).show();
-    }
-
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i("Información", "Método onDestroy()");
     }
 }

@@ -44,6 +44,7 @@
         <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/ProyectoAndroidGrupo08/app/src/main/res/mipmap-anydpi-v26/ic_login_round.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/ProyectoAndroidGrupo08/app/src/main/res/mipmap-anydpi-v26/ic_new_launcher.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/ProyectoAndroidGrupo08/app/src/main/res/mipmap-anydpi-v26/ic_new_launcher_round.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/drawable/perroavatar_foreground.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/layout/activity_categoria.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/layout/activity_encuesta.xml" value="0.25" />
         <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/layout/activity_list_view.xml" value="0.18115942028985507" />
@@ -51,8 +52,9 @@
         <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/layout/activity_main.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/layout/activity_marca.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/layout/activity_producto.xml" value="0.18568840579710144" />
-        <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/layout/activity_registro.xml" value="0.18568840579710144" />
+        <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/layout/activity_registro.xml" value="0.25" />
         <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/layout/activity_splash_screen.xml" value="0.18568840579710144" />
+        <entry key="..\:/Users/LUIS BOCANEGRA/AndroidStudioProjects/UTP_Grupo8_Equipo5/app/src/main/res/menu/menu_main.xml" value="0.2" />
       </map>
     </option>
   </component>
