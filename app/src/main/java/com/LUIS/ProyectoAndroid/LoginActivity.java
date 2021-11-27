@@ -3,16 +3,12 @@ package com.LUIS.ProyectoAndroid;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -49,8 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         t2 = findViewById(R.id.textView3);
         et1= findViewById(R.id.editTextTextPersonName);
         et2= findViewById(R.id.editTextTextPassword);
-  //      String link = "<a href='https://www.google.com/'>google</a>";
-  //      t2.setMovementMethod(LinkMovementMethod.getInstance());
         String texto= "Recordar Contraseña";
         t2.setText(Html.fromHtml(texto));
         t2.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        iv1 = findViewById(R.id.imageView);
+        iv1 = findViewById(R.id.imageView12);
     }
 
     public void iniciarSesion(View view){

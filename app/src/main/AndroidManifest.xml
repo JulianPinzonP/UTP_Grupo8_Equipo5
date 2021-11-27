@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.LUIS.ProyectoAndroid">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_iconoproyecto1"
@@ -9,6 +11,12 @@
         android:roundIcon="@mipmap/ic_iconoproyecto1_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HolaMundo">
+        <activity
+            android:name=".FirebaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".APIRestActivity"
+            android:exported="false" />
         <activity
             android:name=".SplashScreen"
             android:exported="false" />
@@ -20,7 +28,7 @@
             android:exported="false"
             android:label="@string/registro" />
         <activity
-            android:name=".MarcaActivity"
+            android:name=".AddPetsActivity"
             android:exported="false" />
         <activity
             android:name=".RegistroActivity"

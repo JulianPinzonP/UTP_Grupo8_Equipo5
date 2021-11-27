@@ -25,18 +25,11 @@
             android:textColor="#000000"
             android:textSize="30sp" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName3"
-            android:layout_width="match_parent"
-            android:layout_height="7dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="196dp"
             android:layout_marginBottom="25dp"
-            android:gravity="center_horizontal">
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/imageView7"
@@ -48,33 +41,35 @@
                 android:id="@+id/listaperso"
                 style="@style/Widget.AppCompat.Light.ListView.DropDown"
                 android:layout_width="match_parent"
-                android:layout_height="177dp"
+                android:layout_height="171dp"
                 android:layout_margin="10dp"
                 android:layout_marginTop="25dp">
 
             </ListView>
         </TableRow>
 
-        <Button
-            android:id="@+id/button12"
-            android:layout_width="210dp"
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="AGREGAR MASCOTAS" />
+            android:text="Mascota"
+            android:textAlignment="center"
+            android:fontFamily="@font/fruktur"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:visibility="invisible" />
 
-        <Button
-            android:id="@+id/button13"
-            android:layout_width="210dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="VER MASCOTAS" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/button14"
-            android:layout_width="210dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="HISTORIAL" />
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="190dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp" />
+
+        </TableRow>
 
     </LinearLayout>
 </ScrollView>

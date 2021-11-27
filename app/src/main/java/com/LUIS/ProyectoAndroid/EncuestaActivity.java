@@ -76,7 +76,7 @@ public class EncuestaActivity extends AppCompatActivity {
         String tel = "Teléfono: "+et2.getText().toString();
         String email = "Correo: "+et3.getText().toString();
         String dic = "Dirección: "+ti1.getText().toString();
-        String niv_ing = "Nivel en ingles: "+sp1.getSelectedItem();
+        String niv_ing = "Nivel en ingles: "+sp1.getSelectedItem().toString();
         String gus_prog= "¿Te gusta programar?: ";
         if(sw1.isChecked()){
             gus_prog+= "Si";
