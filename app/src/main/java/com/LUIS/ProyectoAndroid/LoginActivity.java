@@ -17,6 +17,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class LoginActivity extends AppCompatActivity {
     private TextView t1,t2;
     private ImageView iv1;
@@ -24,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
     private MyDBSQLiteHelper admin;
     private SQLiteDatabase db;
     private Cursor filas;
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);

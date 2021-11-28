@@ -40,9 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase db;
     private Cursor filas;
     private ImageView imgView;
-    private TextView tv1;
-    private Spinner sp1;
-    private Button bt1;
+    private TextView tv1, tv2;
 
 
     public void goToActivityProducto(View view) {
@@ -53,19 +51,21 @@ public class MainActivity extends AppCompatActivity {
         startActivity(newIntent);
     }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        Toast.makeText(this, "Método onCreate()", Toast.LENGTH_LONG).show();
         lv = findViewById(R.id.listaperso);
         tv1 = findViewById(R.id.textView16);
+        tv2 = findViewById(R.id.textView21);
         imgView = findViewById(R.id.imageView8);
+
         admin = new MyDBSQLiteHelper(this, vars.nomDB , null, vars.version);
         Bundle extras = getIntent().getExtras();
         String corr = extras.getString("correo");
         ArrayList<String> listado = new ArrayList<String>();
         String nomTabla = extras.getString("nomTabla");
-
+        tv2.setText(corr);
         //Convertir la primera letra a mayusculas
         String tabla = nomTabla.substring(0,1).toUpperCase() + nomTabla.substring(1);
 
@@ -98,9 +98,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         int id = menuItem.getItemId();
-
         if(id == R.id.agregar_mast) {
+            String usuario1 = tv2.getText().toString();
             Intent newIntent= new Intent(this,AddPetsActivity.class);
+            newIntent.putExtra("usuario", usuario1);
             startActivity(newIntent);
         }
         else if(id == R.id.consultar_mast) {
@@ -116,17 +117,20 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             Bitmap decodedBytes = null;
                             byte[] decodeString;
-                            db = admin.getWritableDatabase();
-                            filas = db.rawQuery("SELECT * FROM imagenes WHERE descripcion='"+et1.getText().toString()+"'", null);
+                            String usuario1 = tv2.getText().toString();
+                            db = admin.getReadableDatabase();
+                            filas = db.rawQuery("SELECT * FROM imagenes WHERE descripcion='" + et1.getText().toString() + "'", null);
                             String des = "";
                             if (filas.moveToFirst()) {
                                 des = filas.getString(1);
-                                if (!filas.getString(2).equals("")) {
+                                if (!filas.getString(2).equals("") && filas.getString(3).equals(usuario1)) {
                                     decodeString = Base64.decode(filas.getString(2), Base64.DEFAULT);
                                     decodedBytes = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
-                                }
-                                tv1.setVisibility(View.VISIBLE);
-                                imgView.setImageBitmap(decodedBytes);
+                                    tv1.setVisibility(View.VISIBLE);
+                                    imgView.setImageBitmap(decodedBytes);
+                                }else
+                                    Toast.makeText(getApplicationContext(), "El registro no existe", Toast.LENGTH_SHORT).show();
+                                db.close();
                             } else
                                 Toast.makeText(getApplicationContext(), "El registro no existe", Toast.LENGTH_SHORT).show();
                             db.close();
@@ -163,5 +167,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+    public void errorprueba(View view) {
+        throw new RuntimeException("Test Crash");
     }
 }

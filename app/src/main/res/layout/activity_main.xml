@@ -33,9 +33,12 @@
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/gato" />
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/gato1" />
 
             <ListView
                 android:id="@+id/listaperso"
@@ -65,11 +68,17 @@
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="190dp"
+                android:layout_width="180dp"
                 android:layout_height="200dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginStart="20dp" />
 
         </TableRow>
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
 
     </LinearLayout>
 </ScrollView>

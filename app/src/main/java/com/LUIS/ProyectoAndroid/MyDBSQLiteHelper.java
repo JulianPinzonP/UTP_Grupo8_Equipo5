@@ -13,7 +13,7 @@ public class MyDBSQLiteHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE registro(_id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, fecha TEXT, " +
                 "telefono TEXT, correo TEXT, contra TEXT)");
-        db.execSQL("CREATE TABLE imagenes(_id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion TEXT, img BLOB)");
+        db.execSQL("CREATE TABLE imagenes(_id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion TEXT, img BLOB, usuario TEXT)");
     }
 
     @Override
@@ -23,6 +23,6 @@ public class MyDBSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS imagenes");
         db.execSQL("CREATE TABLE registro(_id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, fecha TEXT, " +
                 "telefono TEXT, correo TEXT, contra TEXT)");
-        db.execSQL("CREATE TABLE imagenes(_id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion TEXT, img BLOB)");
+        db.execSQL("CREATE TABLE imagenes(_id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion TEXT, img BLOB, usuario TEXT)");
     }
 }

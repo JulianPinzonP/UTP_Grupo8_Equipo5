@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -29,6 +31,7 @@ public class RegistroActivity extends AppCompatActivity {
     private SQLiteDatabase db;
     private ContentValues cv;
     private Cursor filas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,7 @@ public class RegistroActivity extends AppCompatActivity {
         et3 = findViewById(R.id.editTextTextEmailAddress2);
         et4 = findViewById(R.id.editTextTextPassword2);
         admin = new MyDBSQLiteHelper(this, vars.nomDB , null, vars.version);
+
 
     }
     @Override

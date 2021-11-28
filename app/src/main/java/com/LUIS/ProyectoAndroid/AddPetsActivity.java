@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -18,6 +20,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -27,7 +30,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class AddPetsActivity extends AppCompatActivity {
     private TextInputEditText ti1, ti2, ti3;
@@ -42,6 +48,7 @@ public class AddPetsActivity extends AppCompatActivity {
     private String bases = "";
     private Bitmap bmp, bmp2;
     private ContentValues cv;
+    private TextView tv1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +58,13 @@ public class AddPetsActivity extends AppCompatActivity {
         ti1 = findViewById(R.id.nombrepet);
         ti2 = findViewById(R.id.razapet);
         ti3 = findViewById(R.id.edadpet);
+        tv1 = findViewById(R.id.textView22);
         btnCamara = findViewById(R.id.btnCamara);
         imgView = findViewById(R.id.imageView12);
         imgView.setImageDrawable(null);
+        Bundle extras = getIntent().getExtras();
+        String usuario = extras.getString("usuario");
+        tv1.setText(usuario);
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,12 +78,28 @@ public class AddPetsActivity extends AppCompatActivity {
             startActivityForResult(intent, 1);
         }
     }
+    public void deGaleria(View view){
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(intent , 2);
+    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imgBitmap = (Bitmap) extras.get("data");
             imgView.setImageBitmap(imgBitmap);
+        }
+        if (requestCode == 2 && resultCode == RESULT_OK) {
+            Uri selectedImage = data.getData();
+            InputStream inputStream;
+            try {
+                inputStream = getContentResolver().openInputStream(selectedImage);
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+                Bitmap bitmap = BitmapFactory.decodeStream(bufferedInputStream);
+                imgView.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
     public void OnBackPressed() {
@@ -91,11 +118,14 @@ public class AddPetsActivity extends AppCompatActivity {
         String nombre = ti1.getText().toString();
         String raza = ti2.getText().toString();
         String edad = ti3.getText().toString();
+        String usuario = tv1.getText().toString();
+
         if (!nombre.equals("") && !raza.equals("") && !edad.equals("")&&imgView.getDrawable() != null) {
             base = new firebaspet (nombre, raza, Integer.parseInt(edad));
             database = FirebaseDatabase.getInstance();
-            myRef = database.getReference().child("base").push();
+            myRef = database.getReference().child("base").child(usuario).push();
             myRef.setValue(base);
+
             String imgCodificada = "";
             imgView.buildDrawingCache(true);
             bmp = imgView.getDrawingCache(true);
@@ -112,6 +142,7 @@ public class AddPetsActivity extends AppCompatActivity {
             cv = new ContentValues();
             cv.put("descripcion", nombre);
             cv.put("img", imgCodificada);
+            cv.put("usuario", usuario);
             long reg = db.insert("imagenes", null, cv);
             if (reg != -1) {
                 Toast.makeText(this, "Registro almacenado", Toast.LENGTH_SHORT).show();
